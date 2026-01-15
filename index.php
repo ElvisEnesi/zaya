@@ -13,9 +13,9 @@
             unset($_SESSION['add-success']);
         }
     ?>
-    <h1>Welcome Zayan,</h1>
     <?php if (mysqli_num_rows($select) == 1) : ?>
         <?php $user = mysqli_fetch_assoc($select); ?>
+    <h1>Welcome <?php echo htmlspecialchars($user['full_name']); ?>,</h1>
     <?php if (isset($_SESSION['user_is_admin'])) : ?>
     <div class="identity">
         Year employed: <?php echo htmlspecialchars($user['year_admitted']); ?>
@@ -56,10 +56,10 @@
             </tr>
             <tr>
                 <td><?php echo htmlspecialchars($user['identity']); ?></td>
-                <td><?php echo htmlspecialchars($user['progress']); ?></td>
+                <td><?php echo htmlspecialchars($user['level']); ?></td>
                 <td><?php echo htmlspecialchars($user['degree']); ?></td>
                 <td><?php echo htmlspecialchars($user['category']); ?></td>
-                <td><?php echo htmlspecialchars($user['admission_status']); ?></td>
+                <td><?php echo htmlspecialchars($user['status']); ?></td>
                 <td><?php echo htmlspecialchars($joined['date']); ?> </td>
             </tr>
         </table>

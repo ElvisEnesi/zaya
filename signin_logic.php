@@ -19,6 +19,7 @@
                 $access_key = $user['password'];
                 if ($user_password == $access_key) {
                     $_SESSION['user_id'] = $user['id'];
+                    mysqli_query($connection, "INSERT INTO activity SET user_id='{$_SESSION['user_id']}'");
                     if ($user['is_admin'] == 1) {
                         $_SESSION['user_is_admin'] = true;
                     }

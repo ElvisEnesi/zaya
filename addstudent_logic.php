@@ -24,9 +24,9 @@
             die();
         } else {
             // insert student into database
-            $insert = mysqli_prepare($connection, "INSERT INTO users (identity, identity_id, full_name, email, department, degree, progress, year_admitted, category) 
+            $insert = mysqli_prepare($connection, "INSERT INTO users (identity, identity_id, full_name, email, department, degree, level, year_admitted, category) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            mysqli_stmt_bind_param($insert, "ssssssss", $identity, $ug_id, $name, $email, $department, $degree, $progress, $year, $category);
+            mysqli_stmt_bind_param($insert, "ssssssiss", $identity, $ug_id, $name, $email, $department, $degree, $progress, $year, $category);
             mysqli_stmt_execute($insert);
             // check if inserted
             if (mysqli_stmt_affected_rows($insert)) {
