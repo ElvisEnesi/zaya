@@ -1,4 +1,9 @@
-
+    <?php 
+        if (!isset($_SESSION['user_id'])) {
+            header("location: signin.php");
+            die();
+        }
+    ?>
     <section class="header">
         <div class="logo">
             <img src="images/logo/CUSTECH.jpg" onclick="window.location.href='index.php'">

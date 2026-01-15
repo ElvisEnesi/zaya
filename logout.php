@@ -5,7 +5,7 @@
         <h2>Are you sure you want to log out?</h2>
         <div class="links">
             <a href="logout_logic.php">Yes</a>
-            <a href="index.html">No</a>
+            <a href="index.php">No</a>
         </div>
     </div>
     <?php 
