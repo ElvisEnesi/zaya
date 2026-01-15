@@ -22,5 +22,5 @@
             <button type="submit" name="submit">Submit</button>
         </form>
     </section>
-</body>
-</html>
+    <?php 
+        include "doc_close.php";    
