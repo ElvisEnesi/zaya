@@ -11,7 +11,7 @@
                 <th>Letter</th>
                 <th>Transcript</th>
                 <th>False result</th>
-                <th>Last activity</th>
+                <th>Date created</th>
             </tr>
             <tr>
                 <td>22L1CS0227</td>
