@@ -2,10 +2,17 @@
         include "database.php";
         include "doctype.php";
         include "header.php";
+        // select user info from database
+        $select = mysqli_query($connection, "SELECT * FROM users WHERE id='{$_SESSION['user_id']}'");
+        $join = mysqli_query($connection, "SELECT * FROM activity WHERE user_id='{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1");
+        $joined = mysqli_fetch_assoc($join);
     ?>
     <h1>Welcome Zayan,</h1>
+    <?php if (mysqli_num_rows($select) == 1) : ?>
+        <?php $user = mysqli_fetch_assoc($select); ?>
+    <?php if (isset($_SESSION['user_is_admin'])) : ?>
     <div class="identity">
-        Year employed: 2022
+        Year employed: <?php echo htmlspecialchars($user['year_admitted']); ?>
     </div>
     <section class="table">
         <table>
@@ -18,15 +25,16 @@
                 <th>Last activity</th>
             </tr>
             <tr>
-                <td>22L1CS0227</td>
-                <td>400</td>
-                <td>B.Sc: Computer Science</td>
-                <td>Full Time</td>
-                <td>Active</td>
-                <td>2026/01/12 13:45</td>
+                <td><?php echo htmlspecialchars($user['identity']); ?></td>
+                <td><?php echo htmlspecialchars($user['full_name']); ?></td>
+                <td><?php echo htmlspecialchars($user['identity_id']); ?></td>
+                <td><?php echo htmlspecialchars($user['category']); ?></td>
+                <td><?php echo htmlspecialchars($user['email']); ?></td>
+                <td><?php echo htmlspecialchars($joined['date']); ?></td>
             </tr>
         </table>
     </section>
+    <?php else : ?>
     <div class="identity">
         Student ID: ug22107 | Year admitted: 2022
     </div>
@@ -41,15 +49,19 @@
                 <th>Last activity</th>
             </tr>
             <tr>
-                <td>22L1CS0227</td>
-                <td>400</td>
-                <td>B.Sc: Computer Science</td>
-                <td>Full Time</td>
-                <td>Active</td>
-                <td>2026/01/12 13:45</td>
+                <td><?php echo htmlspecialchars($user['identity']); ?></td>
+                <td><?php echo htmlspecialchars($user['progress']); ?></td>
+                <td><?php echo htmlspecialchars($user['degree']); ?></td>
+                <td><?php echo htmlspecialchars($user['category']); ?></td>
+                <td><?php echo htmlspecialchars($user['admission_status']); ?></td>
+                <td><?php echo htmlspecialchars($joined['date']); ?> </td>
             </tr>
         </table>
     </section>
+    <?php endif; ?>
+    <?php else : ?>
+        <p>User not found.</p>
+    <?php endif; ?>
 
     <?php 
         include "doc_close.php";

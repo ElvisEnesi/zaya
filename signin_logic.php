@@ -12,13 +12,12 @@
             $_SESSION['signin'] = "Fill all fields!!";
         } else {
             // proceed to select user
-            $select = "SELECT * FROM admin WHERE identity='$employment_id'";
+            $select = "SELECT * FROM users WHERE identity='$employment_id'";
             $query = mysqli_query($connection, $select);
             if (mysqli_num_rows($query) == 1) {
                 $user = mysqli_fetch_assoc($query);
                 $access_key = $user['password'];
                 if ($user_password == $access_key) {
-                    mysqli_query($connection, "INSERT INTO activity SET user_id='$employment_id'");
                     $_SESSION['user_id'] = $user['id'];
                     if ($user['is_admin'] == 1) {
                         $_SESSION['user_is_admin'] = true;

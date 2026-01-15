@@ -8,6 +8,7 @@
                 <ion-icon name="home-outline"></ion-icon>
                 <a href="index.php">Home</a>
             </div>
+            <?php if (isset($_SESSION['user_is_admin'])) : ?>
             <div class="navItems">
                 <ion-icon name="person-add-outline"></ion-icon>
                 <a href="addstudent.php">Add Students</a>
@@ -16,6 +17,7 @@
                 <ion-icon name="book-outline"></ion-icon>
                 <a href="view.php">View complains</a>
             </div>
+            <?php else : ?>
             <div class="navItems">
                 <ion-icon name="add-circle-outline"></ion-icon>
                 <a href="make_complain.php">Make a complain</a>
@@ -24,6 +26,7 @@
                 <ion-icon name="folder-outline"></ion-icon>
                 <a href="history.php">History</a>
             </div>
+            <?php endif; ?>
             <div class="navItems">
                 <ion-icon name="log-out-outline"></ion-icon>
                 <a href="logout.php">Log out</a>
