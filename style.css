@@ -1,0 +1,232 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+h1 {
+    margin: 70px 0 0 50px;
+}
+.form {
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form form {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(219, 212, 212);
+    padding: 30px 60px;
+    width: 400px;
+    border-radius: 30px;
+}
+.form form h1 {
+    margin: 0 0 30px 0;
+    text-align: center;
+}
+.form form label {
+    font-size: 20px;
+    margin-top: 5px;
+}
+.form form input, select {
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    border: none;
+    outline: none;
+}
+.form form button {
+    width: 30%;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid transparent;
+    transition: all 0.6s ease;
+}
+.form form button:hover {
+    background-color: rgb(219, 212, 212);
+    border: 1px solid white;
+    color: white;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    z-index: 99;
+    transition: all 0.6s ease;
+    position: sticky;
+    right: 0;
+    top: 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.header .logo {
+    width: 55px;
+    height: 50px;
+    margin-left: 50px;
+}
+.header .logo img {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+.header .nav {
+    display: flex;
+    margin: 15px 50px 0 0;
+}
+.header .nav .navItems {
+    margin: 0 10px;
+    display: flex;
+}
+.header .nav .navItems a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    transition: all 0.6s ease;
+}
+.header .nav .navItems a:hover {
+    color: rgb(219, 212, 212);
+}
+.icon {
+    display: none;
+    cursor: pointer;
+}
+.identity {
+    font-size: 18px;
+    margin: 20px 0 0 40px;
+}
+.table {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 50px 0 0 0;
+}
+.table table {
+    width: 1000px;
+    border-collapse: collapse;
+}
+.table table tr {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 5px;
+    background-color: transparent;
+}
+.table table tr th {
+    padding: 5px;
+}
+.table table tr:nth-child(odd) {
+    background-color: rgb(219, 212, 212);
+}
+.table table tr td {
+    padding: 5px;
+}
+.table table tr td a {
+    color: rgb(16, 241, 16);
+}
+.note {
+    width: 100%;
+    text-align: center;
+}
+.note a {
+    color: rgba(0, 0, 0, 0.7);
+}
+.help {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.help ol {
+    max-width: 800px;
+    background-color: rgb(219, 212, 212);
+    padding: 25px;
+}
+.help ol li {
+    margin-bottom: 10px;
+}
+.caution {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.caution h2 {
+    margin-bottom: 30px;
+}
+.caution .links a {
+    padding: 10px;
+    background-color: rgb(219, 212, 212);
+    margin-right: 30px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    color: black;
+    transition: all 0.6s ease;
+}
+.caution .links a:nth-child(2) {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid rgb(219, 212, 212);
+    margin-right: 0;
+    text-decoration: none;
+}
+.caution .links a:hover {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid rgb(219, 212, 212);
+}
+.caution .links a:nth-child(2):hover {
+    background-color: rgb(219, 212, 212);
+    border: 1px solid transparent;
+}
+@media screen and (max-width: 450px) {
+    .form {
+        padding: 0 20px;
+    }
+    .form form {
+        padding: 30px;
+    }
+    .form form input, label {
+        width: 100%;
+    }
+    .header {
+        width: 100%;
+    }
+    .header .nav {
+        flex-direction: column;
+        position: fixed;
+        right: -250px;
+        top: 30px;
+        background-color: white;
+        width: 200px;
+        height: 130vh;
+        z-index: 99;
+        padding: 30px 0 0 0;
+        transition: right 0.6s ease;
+    }
+    .header .nav .navItems {
+        margin: 10px;
+    }
+    .icon {
+        display: block;
+    }
+    #close {
+        display: none;
+    }
+    .table table {
+        width: 100%;
+    }
+    .table table tr {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        margin: 10px 0;
+    }
+}
