@@ -5,7 +5,7 @@
     ?>
 <body>
     <section class="form">
-        <form action="" method="post">
+        <form action="addstudent_logic.php" method="post">
             <h1>Add students</h1>
             <input type="text" name="identity" placeholder="Matric">
             <input type="text" name="ug_id" placeholder="UG or UE">
