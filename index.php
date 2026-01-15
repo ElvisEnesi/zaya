@@ -7,6 +7,12 @@
         $join = mysqli_query($connection, "SELECT * FROM activity WHERE user_id='{$_SESSION['user_id']}' ORDER BY id DESC LIMIT 1");
         $joined = mysqli_fetch_assoc($join);
     ?>
+    <?php
+        if (isset($_SESSION['add-success'])) {
+            echo "<div class='notice'>" . $_SESSION['add-success'] . "</div>";
+            unset($_SESSION['add-success']);
+        }
+    ?>
     <h1>Welcome Zayan,</h1>
     <?php if (mysqli_num_rows($select) == 1) : ?>
         <?php $user = mysqli_fetch_assoc($select); ?>

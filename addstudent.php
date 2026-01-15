@@ -4,6 +4,12 @@
         include "header.php";
     ?>
 <body>
+    <?php
+        if (isset($_SESSION['add'])) {
+            echo "<div class='notice'>" . $_SESSION['add'] . "</div>";
+            unset($_SESSION['add']);
+        }
+    ?>
     <section class="form">
         <form action="addstudent_logic.php" method="post">
             <h1>Add students</h1>
