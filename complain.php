@@ -2,6 +2,11 @@
     // include files
     include "database.php";
     include "encryption.php";
+    // mailer files
+    include './vendor/autoload.php';
+    
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
     // signin function
     if (isset($_POST['submit'])) {
         // sanitize user inputs
@@ -16,7 +21,7 @@
             $image_name_1 = $transcript['name'];
             $image_tmp_name_1 = $transcript['tmp_name'];   
             $image_name_1_path = "uploads/" . $image_name_1; 
-            $allowed_types_1 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf'];
+            $allowed_types_1 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf', 'odt'];
             $file_extension_1 = pathinfo($image_name_1, PATHINFO_EXTENSION);
             if (!in_array(strtolower($file_extension_1), $allowed_types_1)) {
                 $_SESSION['add'] = "Transcript file type not allowed. Allowed types: " . implode(", ", $allowed_types_1);
@@ -24,7 +29,7 @@
             $image_name_2 = $letter['name'];
             $image_tmp_name_2 = $letter['tmp_name'];
             $image_name_2_path = "uploads/" . $image_name_2;
-            $allowed_types_2 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf'];
+            $allowed_types_2 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf', 'odt'];
             $file_extension_2 = pathinfo($image_name_2, PATHINFO_EXTENSION);
             if (!in_array(strtolower($file_extension_2), $allowed_types_2)) {
                 $_SESSION['add'] = "Letter file type not allowed. Allowed types: " . implode(", ", $allowed_types_2);
@@ -32,7 +37,7 @@
             $image_name_3 = $result['name'];
             $image_tmp_name_3 = $result['tmp_name']; 
             $image_name_3_path = "uploads/" . $image_name_3;
-            $allowed_types_3 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf'];
+            $allowed_types_3 = ['jpeg', 'jpg', 'png', 'doc', 'docx','pdf', 'odt'];
             $file_extension_3 = pathinfo($image_name_3, PATHINFO_EXTENSION);
             if (!in_array(strtolower($file_extension_3), $allowed_types_3)) {
                 $_SESSION['add'] = "Result file type not allowed. Allowed types: " . implode(", ", $allowed_types_3);
@@ -54,8 +59,34 @@
                 move_uploaded_file($image_tmp_name_1, $image_name_1_path);
                 move_uploaded_file($image_tmp_name_2, $image_name_2_path);
                 move_uploaded_file($image_tmp_name_3, $image_name_3_path);
+                // mail message
+                $mail = new PHPMailer(true);
+                try {
+
+                    $mail->isSMTP();
+                    $mail->Host = 'smtp.gmail.com';
+                    $mail->SMTPAuth = true;
+                    $mail->Username = 'jattoelvis00@gmail.com';
+                    $mail->Password = 'qwlqursqalvsewcf';
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port = 587;
+
+                    $mail->setFrom('jattoelvis00@gmail.com', 'CUSTECH Result Complaint Management');
+                    $mail->addAddress('jattoelvis00@gmail.com');
+
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Result Complaint';
+                    $mail->Body = 'A new student result complain has been made, ensure to check your dasbhoard.';
+
+                    $mail->send();
+                    //echo "Email sent";
+
+                } catch (Exception $e) {
+                    echo "Error: {$mail->ErrorInfo}";
+                }
+                // session message and redirect
                 $_SESSION['add-success'] = "Complain filed successfully.";
-                header("location: index.php");
+                header("location: history.php");
                 die();
             } else {
                 $_SESSION['add'] = "Failed to add complain. Please try again.";
