@@ -66,13 +66,13 @@
                     $mail->isSMTP();
                     $mail->Host = 'smtp.gmail.com';
                     $mail->SMTPAuth = true;
-                    $mail->Username = 'jattoelvis00@gmail.com';
+                    $mail->Username = '';
                     $mail->Password = '';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
 
-                    $mail->setFrom('jattoelvis00@gmail.com', 'CUSTECH Result Complaint Management');
-                    $mail->addAddress('jattoelvis00@gmail.com');
+                    $mail->setFrom('', 'CUSTECH Result Complaint Management');
+                    $mail->addAddress('');
 
                     $mail->isHTML(true);
                     $mail->Subject = 'Result Complaint';
